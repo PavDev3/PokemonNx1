@@ -4,8 +4,19 @@ export const appRoutes: Route[] = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/pokemon-list.component').then(
+      import('./components/pokemons-list/pokemon-list.component').then(
         (m) => m.PokemonListComponent
       ),
+  },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./shared/not-found/not-found.component').then(
+        (m) => m.NotFoundComponent
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: '404',
   },
 ];

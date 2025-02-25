@@ -6,8 +6,8 @@ import { Pokemons } from '../interfaces/pokemons.interface';
   providedIn: 'root',
 })
 export class PokemonService {
-  private apiUrl = 'https://api.example.com/pokemons'; // URL de l
-  //
+  private apiUrl = 'https://pokeapi.co/api/v2/pokemon?&offset=$';
+
   public offset = signal(0);
 
   http = inject(HttpClient);
@@ -15,7 +15,7 @@ export class PokemonService {
   pokemonListResource = resource({
     request: this.offset,
     loader: ({ request: offset }) =>
-      fetch(`https://pokeapi.co/api/v2/pokemon?limit=21&offset=${offset}`)
+      fetch(`${this.apiUrl}${offset}`)
         .then((res) => res.json())
         .then((data) =>
           data.results.map((pokemon: Pokemons) => ({

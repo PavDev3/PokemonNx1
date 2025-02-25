@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
-import { Pokemons } from '../interfaces/pokemons.interface';
-import { PokemonService } from '../services/pokemon.service';
+import { Pokemons } from 'src/app/interfaces/pokemons.interface';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,10 +10,13 @@ import { PokemonService } from '../services/pokemon.service';
   styleUrl: './pokemon-list.component.css',
 })
 export class PokemonListComponent {
-  public pokemonsList = signal<Pokemons[]>([]);
+  //Inject the service
   public pokemonService = inject(PokemonService);
+  // Create a signal to store the list of pokemons
+  public pokemonsList = signal<Pokemons[]>([]);
 
   constructor() {
+    // This effect will run every time the pokemonList is changes
     effect(() => {
       const newPokemons = this.pokemonService.pokemonListResource.value();
       if (newPokemons) {
