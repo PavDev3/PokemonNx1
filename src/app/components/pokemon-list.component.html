@@ -1,0 +1,11 @@
+<p>pokemon-list works!</p>
+
+<div class="grid grid-cols-1 gap-4">
+  <ul>
+    <li>
+      @for (pokemon of pokemonsList(); track pokemon.name) {
+      {{ pokemon.name }}
+      }
+    </li>
+  </ul>
+</div>

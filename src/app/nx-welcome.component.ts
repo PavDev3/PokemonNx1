@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nx-welcome',
-  imports: [CommonModule],
-  template: ` <h1 class="text-3xl font-bold underline">Hello world!</h1> `,
+  imports: [RouterModule],
+  template: `<router-outlet />`,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
