@@ -9,6 +9,13 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: 'details',
+    loadComponent: () =>
+      import('./components/pokemon-details/pokemon-details.component').then(
+        (m) => m.PokemonDetailsComponent
+      ),
+  },
+  {
     path: '404',
     loadComponent: () =>
       import('./shared/not-found/not-found.component').then(
