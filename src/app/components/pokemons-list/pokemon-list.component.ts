@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, signal } from '@angular/core';
-import { Pokemons } from 'src/app/interfaces/pokemons.interface';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { Pokemon } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -9,19 +9,22 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.css',
 })
-export class PokemonListComponent {
-  //Inject the service
+export class PokemonListComponent implements OnInit {
   public pokemonService = inject(PokemonService);
-  // Create a signal to store the list of pokemons
-  public pokemonsList = signal<Pokemons[]>([]);
+  public pokemons = signal<Pokemon[]>([]);
+  public error: string | null = null;
 
-  constructor() {
-    // This effect will run every time the pokemonList is changes
-    effect(() => {
-      const newPokemons = this.pokemonService.pokemonListResource.value();
-      if (newPokemons) {
-        this.pokemonsList.set(newPokemons);
-      }
+  // Initialize the component
+  ngOnInit(): void {
+    this.pokemonService.fetchPokemons().subscribe({
+      next: (data: Pokemon[]) => {
+        this.pokemons.set(data);
+        console.log('Pokemons fetched successfully', data);
+      },
+      error: (err) => {
+        this.error = 'Failed to fetch pokemons';
+        console.error('Error fetching pokemons', err);
+      },
     });
   }
 }
