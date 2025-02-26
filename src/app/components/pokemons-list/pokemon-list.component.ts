@@ -35,12 +35,15 @@ export class PokemonListComponent implements OnInit {
 
   // Search for a pokemon by name
   onSearchResult(result: string) {
+    console.log('result', result);
     if (result.length > 0) {
       this.filteredPokemons.set(
         this.pokemons().filter((pokemon) => {
           return pokemon.name.toLowerCase().includes(result.toLowerCase());
         })
       );
+    } else {
+      this.filteredPokemons.set(this.pokemons().slice(0, 20));
     }
   }
 }

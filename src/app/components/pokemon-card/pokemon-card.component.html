@@ -1,4 +1,7 @@
-<div class="card p-4 border rounded-lg shadow-md">
+<div
+  [routerLink]="['/details', pokemon.id]"
+  class="card p-4 border rounded-lg shadow-md"
+>
   @if (pokemon) {
   {{ pokemon.name }}
   <img [src]="pokemon.sprites?.front_default" alt="{{ pokemon.name }}" />

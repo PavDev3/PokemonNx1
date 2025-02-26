@@ -16,10 +16,9 @@ export class SearchBoxComponent {
   });
 
   constructor() {
+    // emit the search result when the form value changes if not empty
     this.searchForm.valueChanges.subscribe((value) => {
-      if (value.search) {
-        this.searchResult.emit(value.search);
-      }
+      this.searchResult.emit(value.search || '');
     });
   }
 }
