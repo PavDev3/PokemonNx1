@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
       ),
   },
   {
-    path: 'details',
+    path: 'details/:id',
     loadComponent: () =>
       import('./components/pokemon-details/pokemon-details.component').then(
         (m) => m.PokemonDetailsComponent
