@@ -5,9 +5,7 @@
   <div class="grid grid-cols-1 gap-4 p-4">
     <ul>
       @for (pokemon of pokemons(); track pokemon.name) {
-      <li>
-        {{ pokemon.name }}
-      </li>
+      <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
       }
     </ul>
   </div>
