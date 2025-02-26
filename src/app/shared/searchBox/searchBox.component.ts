@@ -1,18 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-box',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './searchBox.component.html',
 })
 export class SearchBoxComponent {
-  placeholder = input('Search');
-  initialValue = input('');
+  searchResult = output<string>();
 
-  onKeyPress(searchTerm: string) {
-    /// To do: Implement the search functionality ///
+  fb = inject(FormBuilder);
+  searchForm = this.fb.group({
+    search: [''],
+  });
 
-    console.log('Search term:', searchTerm);
+  constructor() {
+    this.searchForm.valueChanges.subscribe((value) => {
+      if (value.search) {
+        this.searchResult.emit(value.search);
+      }
+    });
   }
 }

@@ -12,7 +12,7 @@ import {
   providedIn: 'root',
 })
 export class PokemonService {
-  private baseUrl = 'https://pokeapi.co/api/v2/pokemon';
+  private baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1304';
 
   readonly http = inject(HttpClient);
   public pokemons = signal<Pokemon[]>([]);
@@ -25,5 +25,11 @@ export class PokemonService {
 
   fetchPokemonDetails(url: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(url);
+  }
+
+  // filter the 15 first pokemons
+  filterPokemons(pokemons: Pokemon[]): Pokemon[] {
+    console.log(pokemons);
+    return pokemons.slice(0, 15);
   }
 }

@@ -1,8 +1,7 @@
-<input
-  type="text"
-  class="form-control p-2 rounded-lg text-white"
-  [value]="initialValue()"
-  [placeholder]="placeholder()"
-  (keyup)="onKeyPress(txtInput.value)"
-  #txtInput
-/>
+<form [formGroup]="searchForm">
+  <input
+    class="border border-gray-300 rounded-md p-2"
+    formControlName="search"
+    placeholder="Search..."
+  />
+</form>
