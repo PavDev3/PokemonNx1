@@ -4,26 +4,35 @@
   >
     <div class="bg-blue-800 p-4">
       <h2 class="text-2xl font-bold text-center text-white">
-        {{ pokemon.name }}
+        {{ pokemonDetails()!.name }}
       </h2>
+      <img
+        class="w-full h-100 object-cover"
+        [src]="
+          pokemonDetails()!.sprites!.other!['official-artwork']!.front_default
+        "
+        alt="pokemonDetails().name"
+      />
     </div>
-    <img
-      class="w-full h-100 object-cover"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-      alt="Bulbasaur"
-    />
     <div class="p-4">
       <h3 class="text-lg font-semibold">Stats</h3>
       <ul class="list-disc list-inside">
-        <li>HP: 45</li>
-        <li>Attack: 49</li>
-        <li>Defense: 49</li>
-        <li>Speed: 45</li>
-      </ul>
-      <h3 class="text-lg font-semibold mt-4">Abilities</h3>
-      <ul class="list-disc list-inside">
-        <li>Overgrow</li>
-        <li>Chlorophyll</li>
+        <li>
+          {{ pokemonDetails()!.stats![0].stat.name | titlecase }}:
+          {{ pokemonDetails()!.stats![0].base_stat }}
+        </li>
+        <li>
+          {{ pokemonDetails()!.stats![1].stat.name | titlecase }}:
+          {{ pokemonDetails()!.stats![1].base_stat }}
+        </li>
+        <li>
+          {{ pokemonDetails()!.stats![2].stat.name | titlecase }}:
+          {{ pokemonDetails()!.stats![2].base_stat }}
+        </li>
+        <li>
+          {{ pokemonDetails()!.stats![3].stat.name | titlecase }}:
+          {{ pokemonDetails()!.stats![3].base_stat }}
+        </li>
       </ul>
     </div>
   </div>

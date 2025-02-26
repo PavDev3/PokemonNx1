@@ -16,6 +16,7 @@ export class PokemonService {
 
   readonly http = inject(HttpClient);
   public pokemons = signal<Pokemon[]>([]);
+  public pokemonDetails = signal<Pokemon | null>(null);
 
   fetchPokemons(): Observable<PokemonList[]> {
     return this.http
