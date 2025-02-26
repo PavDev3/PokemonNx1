@@ -1,5 +1,7 @@
 <div class="card p-4 border rounded-lg shadow-md">
-  @if (pokemon !== undefined) {
-  {{ pokemon().name }}
+  @if (pokemon) {
+  {{ pokemon.name }}
+  <img [src]="pokemon.sprites?.front_default" alt="{{ pokemon.name }}" />
+
   }
 </div>

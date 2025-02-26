@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Pokemon } from 'src/app/interfaces/pokemons.interface';
+import { PokemonList } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 
@@ -12,13 +12,14 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 })
 export class PokemonListComponent implements OnInit {
   public pokemonService = inject(PokemonService);
-  public pokemons = signal<Pokemon[]>([]);
+  public pokemons = signal<PokemonList[]>([]);
+  public pokemonId = signal<number>(0);
   public error: string | null = null;
 
   // Initialize the component
   ngOnInit(): void {
     this.pokemonService.fetchPokemons().subscribe({
-      next: (data: Pokemon[]) => {
+      next: (data: PokemonList[]) => {
         this.pokemons.set(data);
         console.log('Pokemons fetched successfully', data);
       },

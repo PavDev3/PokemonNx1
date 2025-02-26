@@ -1,19 +1,21 @@
-export interface PokemonResponse {
-  results: Pokemon[];
+export interface PokemonListResponse {
+  results: PokemonList[];
+}
+
+export interface PokemonList {
+  name: string;
+  url: string;
 }
 
 export interface Pokemon {
   name: string;
   url: string;
-
-  stats: PokemonStats[];
-  sprites: PokemonsSprites;
-}
-
-export interface PokemonsSprites {
-  sprites: {
-    other: {
-      'official-artwork': {
+  id?: number;
+  stats?: PokemonStats[];
+  sprites?: {
+    front_default: string;
+    other?: {
+      'official-artwork'?: {
         front_default: string;
       };
     };
