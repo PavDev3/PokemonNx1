@@ -6,6 +6,7 @@
     (searchResult)="onSearchResult($event)"
   >
   </app-search-box>
+  <div class="card flex justify-center"></div>
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     @for (pokemon of filteredPokemons(); track pokemon.name) {

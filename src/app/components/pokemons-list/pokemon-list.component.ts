@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
+
 import { PokemonList } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { SearchBoxComponent } from '../../shared/searchBox/searchBox.component';
@@ -8,6 +9,7 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 @Component({
   selector: 'app-pokemon-list',
   imports: [CommonModule, PokemonCardComponent, SearchBoxComponent],
+
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.css',
 })

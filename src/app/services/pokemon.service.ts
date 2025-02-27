@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Observable, of, tap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import {
   Pokemon,
   PokemonList,
@@ -12,7 +13,8 @@ import {
   providedIn: 'root',
 })
 export class PokemonService {
-  private baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1304';
+  private baseUrl = 'https://pokeapi.co/api/v2/pokemon?/limit=1304';
+  readonly messageService = inject(MessageService);
   readonly http = inject(HttpClient);
   // We save the pokemons in the service
   pokemons: PokemonList[] = [];
@@ -28,16 +30,17 @@ export class PokemonService {
       map((response) => response.results),
       tap((results) => {
         this.pokemons = results; // We save the pokemons in the service
+      }),
+      catchError((error) => {
+        this.showError('Error fetching pokemons');
+        return of([]);
       })
     );
   }
 
   fetchPokemonDetails(url: string): Observable<Pokemon> {
-    console.log('url', url);
-    console.log('pokemonMap2', this.pokemonMap);
     // if we have the pokemon details in the service, we return the details from Map
     if (this.pokemonMap.has(url)) {
-      // console.log('recuperando de cache', url);
       return of(this.pokemonMap.get(url)!);
     }
     // if we don't have the pokemon details in the service, we fetch the details from the API
@@ -46,5 +49,12 @@ export class PokemonService {
         this.pokemonMap.set(url, pokemon);
       })
     );
+  }
+  private showError(message: string) {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: message,
+    });
   }
 }
