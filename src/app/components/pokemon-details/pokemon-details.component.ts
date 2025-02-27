@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Pokemon } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-details',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './pokemon-details.component.html',
 })
 export class PokemonDetailsComponent implements OnInit {

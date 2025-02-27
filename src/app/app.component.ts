@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @Component({
-  imports: [RouterModule, NavbarComponent],
+  imports: [RouterModule, HeaderComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

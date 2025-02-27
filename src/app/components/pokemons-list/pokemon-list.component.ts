@@ -14,7 +14,6 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 export class PokemonListComponent implements OnInit {
   pokemonService = inject(PokemonService);
   pokemons = signal<PokemonList[]>([]);
-  pokemonId = signal<number>(0);
   filteredPokemons = signal<PokemonList[]>([]);
 
   error: string | null = null;
