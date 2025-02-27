@@ -12,6 +12,7 @@ export interface Pokemon {
   url: string;
   id?: number;
   stats?: PokemonStats[];
+  types?: PokemonTypes[];
   sprites?: {
     front_default: string;
     other?: {
@@ -25,6 +26,12 @@ export interface Pokemon {
 export interface PokemonStats {
   base_stat: number;
   stat: {
+    name: string;
+  };
+}
+
+export interface PokemonTypes {
+  type: {
     name: string;
   };
 }
