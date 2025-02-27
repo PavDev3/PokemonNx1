@@ -20,7 +20,7 @@ export class PokemonDetailsComponent implements OnInit {
       const id = params.get('id');
       // if the id is not null, we fetch the pokemon details
       if (id) {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
         this.pokemonService.fetchPokemonDetails(url).subscribe({
           next: (data) => this.pokemonDetails.set(data),
           error: (err) => console.error('Error al obtener detalles:', err),

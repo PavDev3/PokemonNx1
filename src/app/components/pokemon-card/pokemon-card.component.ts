@@ -22,9 +22,4 @@ export class PokemonCardComponent implements OnInit {
         this.pokemon = pokemon;
       });
   }
-
-  navigateToDetails() {
-    this.router.navigate(['/details', this.pokemon.id]);
-    console.log(this.pokemon.id);
-  }
 }
