@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   Pokemon,
@@ -13,15 +13,17 @@ import {
 })
 export class PokemonService {
   private baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1304';
-
   readonly http = inject(HttpClient);
-  public pokemons = signal<Pokemon[]>([]);
-  public pokemonDetails = signal<Pokemon | null>(null);
+  pokemons: Pokemon[] = [];
 
   fetchPokemons(): Observable<PokemonList[]> {
-    return this.http
-      .get<PokemonListResponse>(this.baseUrl)
-      .pipe(map((response) => response.results));
+    return this.http.get<PokemonListResponse>(this.baseUrl).pipe(
+      map((response) => response.results),
+      tap((results) => {
+        this.pokemons = results;
+        console.log('Pokemons guardados en el servicio:', this.pokemons.length);
+      })
+    );
   }
 
   fetchPokemonDetails(url: string): Observable<Pokemon> {
