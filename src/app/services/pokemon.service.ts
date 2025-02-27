@@ -31,7 +31,7 @@ export class PokemonService {
       tap((results) => {
         this.pokemons = results; // We save the pokemons in the service
       }),
-      catchError((error) => {
+      catchError(() => {
         this.showError('Error fetching pokemons');
         return of([]);
       })
