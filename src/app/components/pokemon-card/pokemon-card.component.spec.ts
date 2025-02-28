@@ -12,12 +12,12 @@ describe('PokemonCardComponent', () => {
   let pokemonServiceMock: jest.Mocked<PokemonService>;
 
   beforeEach(async () => {
-    // Mock de MessageService
+    // MessageService mock
     const messageServiceMock = {
       add: jest.fn(),
     };
 
-    // Mock de PokemonService
+    // PokemonService mock
     pokemonServiceMock = {
       fetchPokemonDetails: jest.fn().mockReturnValue(
         of({
@@ -31,13 +31,13 @@ describe('PokemonCardComponent', () => {
       pokemonMap: new Map(),
     } as unknown as jest.Mocked<PokemonService>;
 
-    // Mock de ActivatedRoute
+    // ActivatedRoute mock
     const activatedRouteMock = {
       snapshot: { paramMap: { get: jest.fn().mockReturnValue('25') } },
     };
 
     await TestBed.configureTestingModule({
-      imports: [PokemonCardComponent], // Standalone component
+      imports: [PokemonCardComponent],
       providers: [
         { provide: PokemonService, useValue: pokemonServiceMock },
         { provide: MessageService, useValue: messageServiceMock },
@@ -48,7 +48,7 @@ describe('PokemonCardComponent', () => {
     fixture = TestBed.createComponent(PokemonCardComponent);
     component = fixture.componentInstance;
 
-    // Simulamos el `InputSignal<string>` de `pokemonUrl`
+    // Simulate the `InputSignal<string>` of `pokemonUrl`
     (component as any).pokemonUrl = signal(
       'https://pokeapi.co/api/v2/pokemon/25'
     );

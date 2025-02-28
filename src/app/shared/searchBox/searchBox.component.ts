@@ -9,8 +9,9 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 })
 export class SearchBoxComponent {
   searchResult = output<string>();
-
+  // inject the form builder
   fb = inject(FormBuilder);
+  // create the search form
   searchForm = this.fb.group({
     search: [''],
   });
