@@ -1,23 +1,24 @@
-import { TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { provideRouter } from '@angular/router';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: { params: of({ id: '1' }) }, // Mock de ActivatedRoute
-        },
-      ],
-    });
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HeaderComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    const fixture = TestBed.createComponent(HeaderComponent);
-    const component = fixture.componentInstance;
+  it('should create the header component', () => {
     expect(component).toBeTruthy();
   });
 });
