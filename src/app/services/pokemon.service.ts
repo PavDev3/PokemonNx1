@@ -13,7 +13,7 @@ import {
   providedIn: 'root',
 })
 export class PokemonService {
-  private baseUrl = 'https://pokeapi.co/api/v2/pokemon?/limit=1304';
+  private baseUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1304';
   readonly messageService = inject(MessageService);
   readonly http = inject(HttpClient);
   // We save the pokemons in the service
