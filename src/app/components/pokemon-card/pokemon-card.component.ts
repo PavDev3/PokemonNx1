@@ -17,7 +17,7 @@ export class PokemonCardComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   pokemon!: Pokemon;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.pokemonService
       .fetchPokemonDetails(this.pokemonUrl())
       // We unsubscribe from the observable when the component is destroyed

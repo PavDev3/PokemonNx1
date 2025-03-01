@@ -13,10 +13,10 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
   templateUrl: './pokemon-list.component.html',
 })
 export class PokemonListComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
   pokemonService = inject(PokemonService);
   pokemons = signal<PokemonList[]>([]);
   filteredPokemons = signal<PokemonList[]>([]);
-  private destroyRef = inject(DestroyRef);
   error: string | null = null;
 
   // Initialize the component
@@ -30,7 +30,7 @@ export class PokemonListComponent implements OnInit {
           this.pokemons.set(data);
           this.filteredPokemons.set(data.slice(0, 20));
         },
-        error: (err) => {
+        error: () => {
           this.error = 'Failed to fetch pokemons';
         },
       });
