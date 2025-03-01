@@ -12,6 +12,7 @@
 - 🔄 **Infinite Scroll with `@Defer`:** Implement infinite scrolling instead of displaying only the first 20 Pokémon.
 - 🎨 **Dynamic Pokémon Type Colors:** Assign a background color to Pokémon cards based on their type (e.g., Water = Blue, Fire = Red, Grass = Green).
 - 🆕 **Expanded Pokémon Details:** Display additional attributes such as abilities and evolutions.
+- 👤 **Skeleton Loading Mode:** Display a skeleton screen while data is being fetched to improve user experience and provide visual feedback.
 
 ---
 
@@ -33,7 +34,7 @@ Clone the repository and navigate into the project directory:
 
 ToDo
 ```sh
-git clone https://github.com/pavdev3/pokemon-nx1.git
+git clone https://github.com/PavDev3/PokemonNx1.git
 cd pokemon-nx1
 ```
 Install dependencies:
@@ -54,8 +55,12 @@ nx serve PokemonNx1
 Once started, open **[http://localhost:4200](http://localhost:4200)** in your browser.
 
 ---
+## **🌍 Running the Application online**
+To visit the project online, click the following link:
 
+**[PokemonNx1](https://pokemon-nx1-git-main-pablo-nunez-s-projects.vercel.app/)**
 
+---
 
 ## **🧪 Running Tests**
 To run unit tests with coverage:
@@ -68,7 +73,6 @@ open coverage/index.html
 ```
 
 ---
-
 
 ## **📼 API Integration**
 This project integrates with the **PokeAPI** to fetch Pokémon data:
