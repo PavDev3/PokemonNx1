@@ -3,9 +3,9 @@
   <div class="card p-4 border rounded-lg shadow-md bg-gray-400">
     @if (pokemon) {
     <div class="flex flex-col items-center">
-      <h3 class="text-lg font-semibold text-center capitalize">
+      <h2 class="text-lg font-semibold text-center capitalize text-gray-900">
         {{ pokemon.name }}
-      </h3>
+      </h2>
       <img
         [src]="pokemon.sprites?.other?.['official-artwork']?.front_default"
         alt="{{ pokemon.name }}"

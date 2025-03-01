@@ -1,6 +1,6 @@
 # **PokemonNx1** 
 
-**PokemonNx1** is an **Nx-based Angular application** that allows users to **search and view Pokémon details** using the public **[PokeAPI](https://pokeapi.co/)**. This project follows **modular architecture** to ensure scalability, maintainability, and high performance.
+**PokemonNx1** is an **Angular application** that allows users to **search and view Pokémon details** using the public **[PokeAPI](https://pokeapi.co/)**. This project follows **modular architecture** to ensure scalability, maintainability, and high performance.
 
 ## **📌 Features**
 - 🐜 **Pokémon List** displaying names and links to detailed pages.
@@ -20,7 +20,7 @@
 Before running the project, ensure you have the following installed:
 - **Node.js** (Recommended: `18.x` or later)
 - **NPM** or **Yarn**
-- **Nx CLI** *(optional, but recommended for better performance)*
+
 
 To install Nx CLI globally, run:
 ```sh
@@ -45,12 +45,9 @@ npm install
 ## **🏃 Running the Application**
 To start the development server, use:
 ```sh
-npx nx serve PokemonNx1
+npm start
 ```
-or if you have Nx CLI installed:
-```sh
-nx serve PokemonNx1
-```
+
 Once started, open **[http://localhost:4200](http://localhost:4200)** in your browser.
 
 ---
