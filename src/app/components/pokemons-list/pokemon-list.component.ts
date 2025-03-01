@@ -9,9 +9,7 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 @Component({
   selector: 'app-pokemon-list',
   imports: [CommonModule, PokemonCardComponent, SearchBoxComponent],
-
   templateUrl: './pokemon-list.component.html',
-  styleUrl: './pokemon-list.component.css',
 })
 export class PokemonListComponent implements OnInit {
   pokemonService = inject(PokemonService);
@@ -29,7 +27,6 @@ export class PokemonListComponent implements OnInit {
       },
       error: (err) => {
         this.error = 'Failed to fetch pokemons';
-        console.error('Error fetching pokemons', err);
       },
     });
   }
