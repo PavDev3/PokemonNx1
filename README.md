@@ -85,8 +85,9 @@ This project integrates with the **PokeAPI** to fetch Pokémon data:
 
 ### ✅ Project Setup & Development
 - **Nx Monorepo** for modular and scalable development.
-- **Standalone Angular Components** to simplify architecture.
-- **Tailwind CSS** for styling (if used).
+- **Angular 19.1** 
+- **Tailwind CSS** for styling.
+- **PrimeNG 19** for theme.
 
 ### 🎮 Implemented Features
 - **Pokémon List Component**: Displays Pokémon fetched from the API.
