@@ -32,7 +32,6 @@ npm install -g nx
 ## **🚀 Installation**
 Clone the repository and navigate into the project directory:
 
-ToDo
 ```sh
 git clone https://github.com/PavDev3/PokemonNx1.git
 cd pokemon-nx1
