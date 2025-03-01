@@ -9,6 +9,13 @@ describe('PokemonService', () => {
   let service: PokemonService;
   let httpClientMock: jest.Mocked<HttpClient>;
   let messageServiceMock: jest.Mocked<MessageService>;
+  const mockPokemon: Pokemon = {
+    id: 1,
+    name: 'bulbasaur',
+    url: 'https://pokeapi.co/api/v2/pokemon/1/',
+    sprites: { front_default: '' },
+    types: [],
+  };
 
   beforeEach(() => {
     httpClientMock = {
@@ -43,7 +50,7 @@ describe('PokemonService', () => {
       ],
     };
 
-    // Simula la llamada HTTP y devuelve los datos mock
+    // Mock the HTTP client to return the mock response
     httpClientMock.get.mockReturnValue(of(mockResponse));
 
     service.fetchPokemons().subscribe((pokemons) => {
@@ -88,13 +95,6 @@ describe('PokemonService', () => {
 
   it('should fetch pokemon details if not cached', () => {
     const url = 'https://pokeapi.co/api/v2/pokemon/1/';
-    const mockPokemon: Pokemon = {
-      id: 1,
-      name: 'bulbasaur',
-      url: 'https://pokeapi.co/api/v2/pokemon/1/',
-      sprites: { front_default: '' },
-      types: [],
-    };
 
     httpClientMock.get.mockReturnValue(of(mockPokemon));
 
@@ -108,13 +108,6 @@ describe('PokemonService', () => {
 
   it('should return cached pokemon details if available', () => {
     const url = 'https://pokeapi.co/api/v2/pokemon/1/';
-    const mockPokemon: Pokemon = {
-      id: 1,
-      name: 'bulbasaur',
-      url: 'https://pokeapi.co/api/v2/pokemon/1/',
-      sprites: { front_default: '' },
-      types: [],
-    };
 
     service.pokemonMap.set(url, mockPokemon);
 
