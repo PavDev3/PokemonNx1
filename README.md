@@ -1,101 +1,107 @@
-# PokemonNx1
+# **PokemonNx1** 
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+**PokemonNx1** is an **Nx-based Angular application** that allows users to **search and view Pokémon details** using the public **[PokeAPI](https://pokeapi.co/)**. This project follows **modular architecture** to ensure scalability, maintainability, and high performance.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## **📌 Features**
+- 🐜 **Pokémon List** displaying names and links to detailed pages.
+- 🔍 **Real-time search functionality** to filter Pokémon by name.
+- 📜 **Pokémon details page** showcasing images, abilities, and stats.
+- 🚀 **Nx modular architecture** for optimized development and deployment.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Future Enhancements
+- 🔄 **Infinite Scroll with `@Defer`:** Implement infinite scrolling instead of displaying only the first 20 Pokémon.
+- 🎨 **Dynamic Pokémon Type Colors:** Assign a background color to Pokémon cards based on their type (e.g., Water = Blue, Fire = Red, Grass = Green).
+- 🆕 **Expanded Pokémon Details:** Display additional attributes such as abilities and evolutions.
 
-## Run tasks
+---
 
-To run the dev server for your app, use:
+## **⚙️ Prerequisites**
+Before running the project, ensure you have the following installed:
+- **Node.js** (Recommended: `18.x` or later)
+- **NPM** or **Yarn**
+- **Nx CLI** *(optional, but recommended for better performance)*
 
+To install Nx CLI globally, run:
+```sh
+npm install -g nx
+```
+
+---
+
+## **🚀 Installation**
+Clone the repository and navigate into the project directory:
+
+ToDo
+```sh
+git clone https://github.com/pavdev3/pokemon-nx1.git
+cd pokemon-nx1
+```
+Install dependencies:
+```sh
+npm install
+```
+---
+
+## **🏃 Running the Application**
+To start the development server, use:
 ```sh
 npx nx serve PokemonNx1
 ```
-
-To create a production bundle:
-
+or if you have Nx CLI installed:
 ```sh
-npx nx build PokemonNx1
+nx serve PokemonNx1
+```
+Once started, open **[http://localhost:4200](http://localhost:4200)** in your browser.
+
+---
+
+
+
+## **🧪 Running Tests**
+To run unit tests with coverage:
+```sh
+npx nx test PokemonNx1 --coverage
+```
+To view the coverage report in the browser:
+```sh
+open coverage/index.html
 ```
 
-To see all available targets to run for a project, run:
+---
 
-```sh
-npx nx show project PokemonNx1
-```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+## **📼 API Integration**
+This project integrates with the **PokeAPI** to fetch Pokémon data:
+- 🌍 **Base API Endpoint:** `https://pokeapi.co/api/v2/pokemon`
+- 🔍 **Example Request:** `https://pokeapi.co/api/v2/pokemon/1/` (Bulbasaur)
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Add new projects
+## Project Breakdown
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+### ✅ Project Setup & Development
+- **Nx Monorepo** for modular and scalable development.
+- **Standalone Angular Components** to simplify architecture.
+- **Tailwind CSS** for styling (if used).
 
-Use the plugin's generator to create new projects.
+### 🎮 Implemented Features
+- **Pokémon List Component**: Displays Pokémon fetched from the API.
+- **Search Component**: Filters Pokémon by name.
+- **Pokémon Details Component**: Shows detailed stats and abilities.
+- **Reusable Components**: `PokemonCard`, `Header`, etc.
 
-To generate a new application, use:
+### 🔍 Testing & Quality Assurance
+- **Jest Unit Tests**:
+  - Tested **components** (`SearchBox`, `PokemonCard`, `PokemonDetails`, etc.).
+  - Mocked **services and API calls** using `jest.fn()`.
+  - Resolved **dependency injection issues** with `inject()`.
+- **Coverage Analysis**: Ensured tests covered key functionality.
 
-```sh
-npx nx g @nx/angular:app demo
-```
+---
 
-To generate a new library, use:
+## **📩 Contact**
+For inquiries or suggestions, feel free to reach out:
+- **🐙 GitHub:** [pavdev3](https://github.com/pavdev3)
+- **📧 Email:** pnunfe@gmail.com
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
