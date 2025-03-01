@@ -50,6 +50,7 @@ export class PokemonService {
       })
     );
   }
+
   private showError(message: string) {
     this.messageService.add({
       severity: 'error',

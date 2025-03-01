@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, input, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
 import { Pokemon } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -13,11 +14,14 @@ export class PokemonCardComponent implements OnInit {
   router = inject(Router);
   public pokemonService = inject(PokemonService);
   public pokemonUrl = input.required<string>();
+  private destroyRef = inject(DestroyRef);
   pokemon!: Pokemon;
 
   ngOnInit(): void {
     this.pokemonService
       .fetchPokemonDetails(this.pokemonUrl())
+      // We unsubscribe from the observable when the component is destroyed
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((pokemon) => {
         this.pokemon = pokemon;
       });

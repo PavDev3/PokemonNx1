@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PokemonList } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { SearchBoxComponent } from '../../shared/searchBox/searchBox.component';
@@ -15,20 +16,24 @@ export class PokemonListComponent implements OnInit {
   pokemonService = inject(PokemonService);
   pokemons = signal<PokemonList[]>([]);
   filteredPokemons = signal<PokemonList[]>([]);
-
+  private destroyRef = inject(DestroyRef);
   error: string | null = null;
 
   // Initialize the component
   ngOnInit(): void {
-    this.pokemonService.fetchPokemons().subscribe({
-      next: (data: PokemonList[]) => {
-        this.pokemons.set(data);
-        this.filteredPokemons.set(data.slice(0, 20));
-      },
-      error: (err) => {
-        this.error = 'Failed to fetch pokemons';
-      },
-    });
+    this.pokemonService
+      .fetchPokemons()
+      // We unsubscribe from the observable when the component is destroyed
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data: PokemonList[]) => {
+          this.pokemons.set(data);
+          this.filteredPokemons.set(data.slice(0, 20));
+        },
+        error: (err) => {
+          this.error = 'Failed to fetch pokemons';
+        },
+      });
   }
 
   // Search for a pokemon by name
