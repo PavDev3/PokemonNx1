@@ -12,10 +12,10 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonCardComponent implements OnInit {
   router = inject(Router);
-  public pokemonService = inject(PokemonService);
-  public pokemonUrl = input.required<string>();
-  private destroyRef = inject(DestroyRef);
+  pokemonService = inject(PokemonService);
+  pokemonUrl = input.required<string>();
   pokemon!: Pokemon;
+  private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
     this.pokemonService

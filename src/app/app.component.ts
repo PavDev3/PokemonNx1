@@ -7,8 +7,5 @@ import { HeaderComponent } from './shared/header/header.component';
   imports: [RouterModule, HeaderComponent, Toast],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'PokemonNx';
-}
+export class AppComponent {}

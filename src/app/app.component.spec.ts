@@ -32,7 +32,8 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have title "PokemonNx"', () => {
-    expect(component.title).toBe('PokemonNx');
+  it('should have a router outlet', () => {
+    const routerOutlet = fixture.nativeElement.querySelector('router-outlet');
+    expect(routerOutlet).toBeTruthy();
   });
 });

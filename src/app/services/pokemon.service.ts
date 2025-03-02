@@ -41,12 +41,16 @@ export class PokemonService {
   fetchPokemonDetails(url: string): Observable<Pokemon> {
     // if we have the pokemon details in the service, we return the details from Map
     if (this.pokemonMap.has(url)) {
-      return of(this.pokemonMap.get(url)!);
+      return of(this.pokemonMap.get(url) as Pokemon); // We cast to Pokemon because we are sure that the pokemon is in the map
     }
     // if we don't have the pokemon details in the service, we fetch the details from the API
     return this.http.get<Pokemon>(url).pipe(
       tap((pokemon) => {
         this.pokemonMap.set(url, pokemon);
+      }),
+      catchError(() => {
+        this.showError('Error fetching pokemons');
+        return of({} as Pokemon);
       })
     );
   }

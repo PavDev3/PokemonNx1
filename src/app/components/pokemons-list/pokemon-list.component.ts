@@ -30,9 +30,6 @@ export class PokemonListComponent implements OnInit {
           this.pokemons.set(data);
           this.filteredPokemons.set(data.slice(0, 20));
         },
-        error: () => {
-          this.error = 'Failed to fetch pokemons';
-        },
       });
   }
 
