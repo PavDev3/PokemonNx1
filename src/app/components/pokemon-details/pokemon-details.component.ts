@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Pokemon } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -15,6 +16,7 @@ export class PokemonDetailsComponent implements OnInit {
   route = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
   pokemonDetails = signal<Pokemon | null>(null);
+  showError = inject(MessageService);
 
   ngOnInit(): void {
     // We get the id from the url
@@ -31,7 +33,13 @@ export class PokemonDetailsComponent implements OnInit {
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
               next: (data) => this.pokemonDetails.set(data),
-              error: (err) => console.error('Error al obtener detalles:', err),
+              error: () => {
+                this.showError.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: 'Failed to fetch pokemon details',
+                });
+              },
             });
         }
       });

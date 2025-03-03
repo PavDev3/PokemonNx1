@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MessageService } from 'primeng/api';
 import { PokemonList } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { SearchBoxComponent } from '../../shared/searchBox/searchBox.component';
@@ -18,6 +19,7 @@ export class PokemonListComponent implements OnInit {
   pokemons = signal<PokemonList[]>([]);
   filteredPokemons = signal<PokemonList[]>([]);
   error: string | null = null;
+  showError = inject(MessageService);
 
   // Initialize the component
   ngOnInit(): void {
@@ -29,6 +31,13 @@ export class PokemonListComponent implements OnInit {
         next: (data: PokemonList[]) => {
           this.pokemons.set(data);
           this.filteredPokemons.set(data.slice(0, 20));
+        },
+        error: () => {
+          this.showError.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Failed to fetch pokemons',
+          });
         },
       });
   }

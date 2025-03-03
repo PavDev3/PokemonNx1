@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { PokemonList } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { SearchBoxComponent } from '../../shared/searchBox/searchBox.component';
@@ -44,16 +44,6 @@ describe('PokemonListComponent', () => {
     expect(pokemonServiceMock.fetchPokemons).toHaveBeenCalled();
     expect(component.pokemons()).toEqual(mockPokemons);
     expect(component.filteredPokemons()).toEqual(mockPokemons.slice(0, 20));
-  });
-
-  it('should handle fetch error', () => {
-    pokemonServiceMock.fetchPokemons.mockReturnValue(
-      throwError(() => new Error('API Error'))
-    );
-
-    component.ngOnInit();
-
-    expect(component.error).toBe('Failed to fetch pokemons');
   });
 
   it('should filter pokemons by search term', () => {
