@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MessageService } from 'primeng/api';
 import { of } from 'rxjs';
 import { PokemonList } from 'src/app/interfaces/pokemons.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -25,7 +26,10 @@ describe('PokemonListComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [PokemonListComponent, SearchBoxComponent, PokemonCardComponent],
-      providers: [{ provide: PokemonService, useValue: pokemonServiceMock }],
+      providers: [
+        { provide: PokemonService, useValue: pokemonServiceMock },
+        MessageService,
+      ],
     });
 
     fixture = TestBed.createComponent(PokemonListComponent);
