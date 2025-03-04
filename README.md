@@ -1,6 +1,6 @@
 # **PokemonNx1** 
 
-**PokemonNx1** is an **Angular application** that allows users to **search and view Pokémon details** using the public **[PokeAPI](https://pokeapi.co/)**. This project follows **modular architecture** to ensure scalability, maintainability, and high performance.
+**PokemonNx1** is an **Angular application** that allows users to **search and view Pokémon details** using the public **[PokeAPI](https://pokeapi.co/)**. This project follows **modular architecture** to ensure scalability, maintainability.
 
 ## **📌 Features**
 - 🐜 **Pokémon List** displaying names and links to detailed pages.
@@ -21,7 +21,7 @@ Before running the project, ensure you have the following installed:
 - **Node.js** (Recommended: `18.x` or later)
 - **NPM** or **Yarn**
 
-
+## **Optional installation**
 To install Nx CLI globally, run:
 ```sh
 npm install -g nx
@@ -73,15 +73,15 @@ open coverage/index.html
 ## **📼 API Integration**
 This project integrates with the **PokeAPI** to fetch Pokémon data:
 - 🌍 **Base API Endpoint:** `https://pokeapi.co/api/v2/pokemon`
-- 🔍 **Example Request:** `https://pokeapi.co/api/v2/pokemon/1/` (Bulbasaur)
+- 🔍 **Example Request:** `https://pokeapi.co/api/v2/pokemon/1/` 
 
 ---
 
 ## Project Breakdown
 
 ### ✅ Project Setup & Development
-- **Nx Monorepo** for modular and scalable development.
 - **Angular 19.1** 
+- **Nx Monorepo** 
 - **Tailwind CSS** for styling.
 - **PrimeNG 19** for theme and components
 
@@ -89,7 +89,7 @@ This project integrates with the **PokeAPI** to fetch Pokémon data:
 - **Pokémon List Component**: Displays Pokémon fetched from the API.
 - **Search Component**: Filters Pokémon by name.
 - **Pokémon Details Component**: Shows detailed stats and abilities.
-- **Reusable Components**: `PokemonCard`, `Header`, etc.
+- **Reusable Components**
 
 ### 🔍 Testing & Quality Assurance
 - **Jest Unit Tests**:

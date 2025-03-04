@@ -42,7 +42,8 @@ describe('PokemonDetailsComponent', () => {
         { provide: MessageService, useValue: messageServiceMock },
         {
           provide: ActivatedRoute,
-          useValue: { paramMap: of({ get: (key: string) => '25' }) },
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          useValue: { paramMap: of({ get: (_: string) => '25' }) },
         },
       ],
     }).compileComponents();

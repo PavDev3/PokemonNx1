@@ -9,7 +9,6 @@ import { PokemonCardComponent } from './pokemon-card.component';
 // Create a test host component
 @Component({
   template: `<app-pokemon-card [pokemonUrl]="pokemonUrl"></app-pokemon-card>`,
-  standalone: true,
   imports: [PokemonCardComponent],
 })
 class TestHostComponent {
@@ -18,7 +17,6 @@ class TestHostComponent {
 
 describe('PokemonCardComponent', () => {
   let component: PokemonCardComponent;
-  let hostComponent: TestHostComponent;
   let hostFixture: ComponentFixture<TestHostComponent>;
   let pokemonServiceMock: jest.Mocked<PokemonService>;
   let messageServiceMock: jest.Mocked<MessageService>;
@@ -38,9 +36,6 @@ describe('PokemonCardComponent', () => {
           types: [{ type: { name: 'Electric' } }],
         })
       ),
-      fetchPokemons: jest.fn(),
-      pokemons: [],
-      pokemonMap: new Map(),
     } as unknown as jest.Mocked<PokemonService>;
 
     // ActivatedRoute mock
@@ -72,7 +67,6 @@ describe('PokemonCardComponent', () => {
 
     // Create the host component fixture
     hostFixture = TestBed.createComponent(TestHostComponent);
-    hostComponent = hostFixture.componentInstance;
 
     // Get the child component instance from the host fixture
     const childDebugElement = hostFixture.debugElement.children[0];
